@@ -7,11 +7,11 @@ public class Telefono implements INode {
 
   public NodeToken f0;
 
-  public NodeOptional f1;
+  public NodeOptionalTelefono f1;
 
   private static final long serialVersionUID = 147L;
 
-  public Telefono(final NodeToken n0, final NodeOptional n1) {
+  public Telefono(final NodeToken n0, final NodeOptionalTelefono n1) {
     f0 = n0;
     f1 = n1;
   }

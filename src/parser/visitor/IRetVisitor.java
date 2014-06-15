@@ -5,54 +5,60 @@ import parser.syntaxtree.*;
 
 public interface IRetVisitor<R> {
 
-  public R visit(final NodeChoice n);
+	public R visit(final NodeChoice n);
 
-  public R visit(final NodeList n);
+	public R visit(final NodeList n);
 
-  public R visit(final NodeListOptional n);
+	public R visit(final NodeListOptional n);
 
-  public R visit(final NodeOptional n);
+	public R visit(final NodeOptional n);
 
-  public R visit(final NodeSequence n);
+	public R visit(final NodeSequence n);
 
-  public R visit(final NodeTCF n);
+	public R visit(final NodeTCF n);
 
-  public R visit(final NodeToken n);
+	public R visit(final NodeToken n);
 
-  public R visit(final Scope n);
+	public R visit(final Scope n);
 
-  public R visit(final Gruppo n);
+	public R visit(final Gruppo n);
 
-  public R visit(final Donatore n);
+	public R visit(final Donatore n);
 
-  public R visit(final Donazione n);
+	public R visit(final Donazione n);
 
-  public R visit(final Indirizzo n);
+	public R visit(final Indirizzo n);
 
-  public R visit(final Sezione n);
+	public R visit(final Sezione n);
 
-  public R visit(final CodiceFiscale n);
+	public R visit(final CodiceFiscale n);
 
-  public R visit(final Telefono n);
+	public R visit(final Telefono n);
 
-  public R visit(final EMail n);
+	public R visit(final EMail n);
 
-  public R visit(final Idoneo n);
+	public R visit(final Idoneo n);
 
-  public R visit(final DataProssimaDonazione n);
+	public R visit(final DataProssimaDonazione n);
 
-  public R visit(final TipoDonatore n);
+	public R visit(final TipoDonatore n);
 
-  public R visit(final TipoDonazione n);
+	public R visit(final TipoDonazione n);
 
-  public R visit(final DatiDonatore n);
+	public R visit(final DatiDonatore n);
 
-  public R visit(final NumeroDonazioni n);
+	public R visit(final NumeroDonazioni n);
 
-  public R visit(final Nome n);
+	public R visit(final Nome n);
 
-  public R visit(final Cognome n);
+	public R visit(final Cognome n);
 
-  public R visit(final Data n);
+	public R visit(final Data n);
+
+	public R visit(final Stato n);
+
+	public R visit(final NodeTelefono n);
+	
+	public R visit(final NodeOptionalTelefono n);
 
 }

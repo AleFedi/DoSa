@@ -1,0 +1,132 @@
+***GRUPPO DONATORI***
+- NOME:
+Frates Pistoia
+- NUMERO:
+240
+- DATA FONDAZIONE:
+12
+/
+10
+/
+2014
+- INDIRIZZO:
+Via le mani dal naso
+2
+c
+- CAP:
+51100
+- COMUNE:
+Pistoia
+- STATO:
+Italia
+- PRESIDENTE:
+Nome:
+Sergio
+-
+Cognome:
+Fedi
+- SEGRETARIO:
+Nome:
+Alessandro
+-
+Cognome:
+Fedi
+- NUMERO ISCRITTI:
+2000
+- SEZIONE:
+Montale
+9
+-
+Quarrata
+7
+-
+5
+;
+***DONATORE***
+- NOME:
+Alessandro Mario
+- COGNOME:
+Fedi
+- SESSO:
+M
+- DATA NASCITA:
+28
+/
+07
+/
+1985
+- STATO NASCITA:
+Italia
+- INDIRIZZO:
+Via Bellaria
+15
+b
+- CAP:
+51100
+- COMUNE:
+Pistoia
+- STATO:
+Italia
+- TELEFONO FISSO:
+057325580
+- TELEFONO CELLULARE:
+3289676688
+- EMAIL:
+alefedi85@gmail.com
+- CITTADINANZA:
+ITALIA
+- GRUPPO SANGUIGNO:
+A
+- RH:
+POSITIVO
+- DATA ISCRIZIONE:
+28
+/
+8
+/
+2010
+- GRUPPO LOCALE:
+240
+- TESSERA GRUPPO LOCALE:
+1050
+- NUMERO DI DONAZIONI:
+10
+- IDONEO:
+I
+- PROSSIMA DATA DISPONIBILE PER DONAZIONE:
+26
+/
+05
+/
+2014
+- TIPOLOGIA DONATORE:
+Socio Donatore
+- SEZIONE:
+PISTOIA
+;
+***DONAZIONE***
+- DONATORE:
+Nome:
+Alessandro
+-
+Cognome:
+Fedi
+- DATA DONAZIONE:
+28
+/
+05
+/
+2014
+- TIPO DI DONAZIONE:
+Sangue Intero
+- UNITA' RACCOLTA:
+Unità Raccolta Fissa
+- COMUNE DONAZIONE:
+Pistoia
+- ASL DONAZIONE:
+PT
+103
+- PUNTO PRELIEVO:
+9
+;
+.

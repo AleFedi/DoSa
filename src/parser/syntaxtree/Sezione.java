@@ -7,19 +7,13 @@ public class Sezione implements INode {
 
   public NodeToken f0;
 
-  public NodeOptional f1;
-
-  public NodeOptional f2;
-
-  public NodeListOptional f3;
+  public NodeToken f1;
 
   private static final long serialVersionUID = 147L;
 
-  public Sezione(final NodeToken n0, final NodeOptional n1, final NodeOptional n2, final NodeListOptional n3) {
+  public Sezione(final NodeToken n0, final NodeToken n1) {
     f0 = n0;
     f1 = n1;
-    f2 = n2;
-    f3 = n3;
   }
 
   public <R, A> R accept(final IRetArguVisitor<R, A> vis, final A argu) {

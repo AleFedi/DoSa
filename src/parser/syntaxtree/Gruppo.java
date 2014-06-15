@@ -19,33 +19,35 @@ public class Gruppo implements INode {
 
   public Indirizzo f6;
 
-  public NodeToken f7;
+  public EMail f7;
 
-  public Nome f8;
+  public NodeToken f8;
 
-  public NodeToken f9;
+  public Nome f9;
 
-  public Cognome f10;
+  public NodeToken f10;
 
-  public NodeToken f11;
+  public Cognome f11;
 
-  public Nome f12;
+  public NodeToken f12;
 
-  public NodeToken f13;
+  public Nome f13;
 
-  public Cognome f14;
+  public NodeToken f14;
 
-  public NodeToken f15;
+  public Cognome f15;
 
   public NodeToken f16;
 
-  public NodeOptional f17;
+  public NodeToken f17;
 
-  public NodeToken f18;
+  public NodeOptional f18;
+
+  public NodeToken f19;
 
   private static final long serialVersionUID = 147L;
 
-  public Gruppo(final NodeToken n0, final Nome n1, final NodeToken n2, final NodeToken n3, final NodeToken n4, final Data n5, final Indirizzo n6, final NodeToken n7, final Nome n8, final NodeToken n9, final Cognome n10, final NodeToken n11, final Nome n12, final NodeToken n13, final Cognome n14, final NodeToken n15, final NodeToken n16, final NodeOptional n17, final NodeToken n18) {
+  public Gruppo(final NodeToken n0, final Nome n1, final NodeToken n2, final NodeToken n3, final NodeToken n4, final Data n5, final Indirizzo n6, final EMail n7, final NodeToken n8, final Nome n9, final NodeToken n10, final Cognome n11, final NodeToken n12, final Nome n13, final NodeToken n14, final Cognome n15, final NodeToken n16, final NodeToken n17, final NodeOptional n18, final NodeToken n19) {
     f0 = n0;
     f1 = n1;
     f2 = n2;
@@ -65,6 +67,7 @@ public class Gruppo implements INode {
     f16 = n16;
     f17 = n17;
     f18 = n18;
+    f19 = n19;
   }
 
   public <R, A> R accept(final IRetArguVisitor<R, A> vis, final A argu) {

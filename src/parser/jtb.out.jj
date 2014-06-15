@@ -67,7 +67,7 @@ TOKEN :
 | < IDONEITA : "I"| "N" >
 | < TIPODONAZIONE : "Multicomponent"| "Plasmaferesi"| "Piastrinoaferesi"| "Sangue Intero" >
 | < UNITARACCOLTA : "Unit\u00e0 Raccolta Fissa" >
-| < EMAIL : ( <ID>| "-"| "_"| "."| <NUM> )* "@" <ID> "." <ID> >
+| < EMAIL : ( <ID>| "-"| "_"| "."| <NUM> )* "@" ( <ID>| "." )* <ID> >
 | < IDENTIFICATOR : <ID> ( " " <ID> )* >
 | < ID : ["A"-"Z", "a"-"z"] ( ["A"-"Z", "a"-"z"] )* >
 | < NUM : ["0"-"9"] ( ["0"-"9"] )* >
@@ -118,26 +118,35 @@ Gruppo Gruppo() :
   Token n8 = null;
   Data n9 = null;
   Indirizzo n10 = null;
-  NodeToken n11 = null;
-  Token n12 = null;
-  Nome n13 = null;
-  NodeToken n14 = null;
-  Token n15 = null;
-  Cognome n16 = null;
-  NodeToken n17 = null;
-  Token n18 = null;
-  Nome n19 = null;
-  NodeToken n20 = null;
-  Token n21 = null;
-  Cognome n22 = null;
-  NodeToken n23 = null;
-  Token n24 = null;
-  NodeToken n25 = null;
-  Token n26 = null;
-  NodeOptional n27 = new NodeOptional();
-  Sezione n28 = null;
-  NodeToken n29 = null;
-  Token n30 = null;
+  EMail n11 = null;
+  NodeToken n12 = null;
+  Token n13 = null;
+  Nome n14 = null;
+  NodeToken n15 = null;
+  Token n16 = null;
+  Cognome n17 = null;
+  NodeToken n18 = null;
+  Token n19 = null;
+  Nome n20 = null;
+  NodeToken n21 = null;
+  Token n22 = null;
+  Cognome n23 = null;
+  NodeToken n24 = null;
+  Token n25 = null;
+  NodeToken n26 = null;
+  Token n27 = null;
+  NodeOptional n28 = new NodeOptional();
+  NodeSequence n29 = null;
+  NodeToken n30 = null;
+  Token n31 = null;
+  Sezione n32 = null;
+  NodeListOptional n33 = null;
+  NodeSequence n34 = null;
+  NodeToken n35 = null;
+  Token n36 = null;
+  Sezione n37 = null;
+  NodeToken n38 = null;
+  Token n39 = null;
 }
 {
   n1 = "***GRUPPO DONATORI***"
@@ -151,29 +160,47 @@ Gruppo Gruppo() :
   { n7 = JTBToolkit.makeNodeToken(n8); }
   n9 = Data()
   n10 = Indirizzo()
-  n12 = "- PRESIDENTE:"
-  { n11 = JTBToolkit.makeNodeToken(n12); }
-  n13 = Nome()
-  n15 = "-"
-  { n14 = JTBToolkit.makeNodeToken(n15); }
-  n16 = Cognome()
-  n18 = "- SEGRETARIO:"
-  { n17 = JTBToolkit.makeNodeToken(n18); }
-  n19 = Nome()
-  n21 = "-"
-  { n20 = JTBToolkit.makeNodeToken(n21); }
-  n22 = Cognome()
-  n24 = "- NUMERO ISCRITTI:"
-  { n23 = JTBToolkit.makeNodeToken(n24); }
-  n26 = < NUM >
-  { n25 = JTBToolkit.makeNodeToken(n26); }
+  n11 = EMail()
+  n13 = "- PRESIDENTE:"
+  { n12 = JTBToolkit.makeNodeToken(n13); }
+  n14 = Nome()
+  n16 = "-"
+  { n15 = JTBToolkit.makeNodeToken(n16); }
+  n17 = Cognome()
+  n19 = "- SEGRETARIO:"
+  { n18 = JTBToolkit.makeNodeToken(n19); }
+  n20 = Nome()
+  n22 = "-"
+  { n21 = JTBToolkit.makeNodeToken(n22); }
+  n23 = Cognome()
+  n25 = "- NUMERO ISCRITTI:"
+  { n24 = JTBToolkit.makeNodeToken(n25); }
+  n27 = < NUM >
+  { n26 = JTBToolkit.makeNodeToken(n27); }
   [
-    n28 = Sezione()
-    { n27.addNode(n28); }
+    { n33 = new NodeListOptional(); }
+    { n29 = new NodeSequence(3); }
+    n31 = "- SEZIONE:"
+    { n30 = JTBToolkit.makeNodeToken(n31); }
+    { n29.addNode(n30); }
+    n32 = Sezione()
+    { n29.addNode(n32); }
+    (
+      { n34 = new NodeSequence(2); }
+      n36 = "-"
+      { n35 = JTBToolkit.makeNodeToken(n36); }
+      { n34.addNode(n35); }
+      n37 = Sezione()
+      { n34.addNode(n37); }
+      { n33.addNode(n34); }
+    )*
+    { n33.nodes.trimToSize(); }
+    { n29.addNode(n33); }
+    { n28.addNode(n29); }
   ]
-  n30 = ";"
-  { n29 = JTBToolkit.makeNodeToken(n30); }
-  { return new Gruppo(n0, n2, n3, n5, n7, n9, n10, n11, n13, n14, n16, n17, n19, n20, n22, n23, n25, n27, n29); }
+  n39 = ";"
+  { n38 = JTBToolkit.makeNodeToken(n39); }
+  { return new Gruppo(n0, n2, n3, n5, n7, n9, n10, n11, n12, n14, n15, n17, n18, n20, n21, n23, n24, n26, n28, n38); }
 }
 
 Donatore Donatore() :
@@ -194,51 +221,52 @@ Donatore Donatore() :
   Token n12 = null;
   NodeToken n13 = null;
   Token n14 = null;
-  NodeOptional n15 = new NodeOptional();
-  CodiceFiscale n16 = null;
-  Indirizzo n17 = null;
-  NodeOptional n18 = new NodeOptional();
-  NodeSequence n19 = null;
-  NodeToken n20 = null;
-  Token n21 = null;
-  Telefono n22 = null;
-  NodeOptional n23 = new NodeOptional();
-  NodeSequence n24 = null;
-  NodeToken n25 = null;
-  Token n26 = null;
-  Telefono n27 = null;
-  NodeOptional n28 = new NodeOptional();
-  EMail n29 = null;
-  NodeToken n30 = null;
-  Token n31 = null;
-  NodeToken n32 = null;
-  Token n33 = null;
-  NodeToken n34 = null;
-  Token n35 = null;
-  NodeToken n36 = null;
-  Token n37 = null;
-  NodeToken n38 = null;
-  Token n39 = null;
-  NodeToken n40 = null;
-  Token n41 = null;
-  NodeToken n42 = null;
-  Token n43 = null;
-  Data n44 = null;
-  NodeToken n45 = null;
-  Token n46 = null;
-  NodeToken n47 = null;
-  Token n48 = null;
-  NodeToken n49 = null;
-  Token n50 = null;
-  NodeToken n51 = null;
-  Token n52 = null;
-  NumeroDonazioni n53 = null;
-  Idoneo n54 = null;
-  DataProssimaDonazione n55 = null;
-  TipoDonatore n56 = null;
-  Sezione n57 = null;
-  NodeToken n58 = null;
-  Token n59 = null;
+  CodiceFiscale n15 = null;
+  Indirizzo n16 = null;
+  NodeOptional n17 = new NodeOptional();
+  NodeSequence n18 = null;
+  NodeToken n19 = null;
+  Token n20 = null;
+  Telefono n21 = null;
+  NodeOptional n22 = new NodeOptional();
+  NodeSequence n23 = null;
+  NodeToken n24 = null;
+  Token n25 = null;
+  Telefono n26 = null;
+  NodeOptional n27 = new NodeOptional();
+  EMail n28 = null;
+  NodeToken n29 = null;
+  Token n30 = null;
+  NodeToken n31 = null;
+  Token n32 = null;
+  NodeToken n33 = null;
+  Token n34 = null;
+  NodeToken n35 = null;
+  Token n36 = null;
+  NodeToken n37 = null;
+  Token n38 = null;
+  NodeToken n39 = null;
+  Token n40 = null;
+  NodeToken n41 = null;
+  Token n42 = null;
+  Data n43 = null;
+  NodeToken n44 = null;
+  Token n45 = null;
+  NodeToken n46 = null;
+  Token n47 = null;
+  NodeToken n48 = null;
+  Token n49 = null;
+  NodeToken n50 = null;
+  Token n51 = null;
+  NumeroDonazioni n52 = null;
+  Idoneo n53 = null;
+  DataProssimaDonazione n54 = null;
+  TipoDonatore n55 = null;
+  NodeToken n56 = null;
+  Token n57 = null;
+  Sezione n58 = null;
+  NodeToken n59 = null;
+  Token n60 = null;
 }
 {
   n1 = "***DONATORE***"
@@ -256,64 +284,63 @@ Donatore Donatore() :
   { n11 = JTBToolkit.makeNodeToken(n12); }
   n14 = < IDENTIFICATOR >
   { n13 = JTBToolkit.makeNodeToken(n14); }
+  n15 = CodiceFiscale()
+  n16 = Indirizzo()
   [
-    n16 = CodiceFiscale()
-    { n15.addNode(n16); }
-  ]
-  n17 = Indirizzo()
-  [
-    { n19 = new NodeSequence(2); }
-    n21 = "- TELEFONO FISSO:"
-    { n20 = JTBToolkit.makeNodeToken(n21); }
-    { n19.addNode(n20); }
-    n22 = Telefono()
-    { n19.addNode(n22); }
+    { n18 = new NodeSequence(2); }
+    n20 = "- TELEFONO FISSO:"
+    { n19 = JTBToolkit.makeNodeToken(n20); }
     { n18.addNode(n19); }
+    n21 = Telefono()
+    { n18.addNode(n21); }
+    { n17.addNode(n18); }
   ]
   [
-    { n24 = new NodeSequence(2); }
-    n26 = "- TELEFONO CELLULARE:"
-    { n25 = JTBToolkit.makeNodeToken(n26); }
-    { n24.addNode(n25); }
-    n27 = Telefono()
-    { n24.addNode(n27); }
+    { n23 = new NodeSequence(2); }
+    n25 = "- TELEFONO CELLULARE:"
+    { n24 = JTBToolkit.makeNodeToken(n25); }
     { n23.addNode(n24); }
+    n26 = Telefono()
+    { n23.addNode(n26); }
+    { n22.addNode(n23); }
   ]
   [
-    n29 = EMail()
-    { n28.addNode(n29); }
+    n28 = EMail()
+    { n27.addNode(n28); }
   ]
-  n31 = "- CITTADINANZA:"
-  { n30 = JTBToolkit.makeNodeToken(n31); }
-  n33 = < IDENTIFICATOR >
-  { n32 = JTBToolkit.makeNodeToken(n33); }
-  n35 = "- GRUPPO SANGUIGNO:"
-  { n34 = JTBToolkit.makeNodeToken(n35); }
-  n37 = < GRUPPOSANGUIGNO >
-  { n36 = JTBToolkit.makeNodeToken(n37); }
-  n39 = "- RH:"
-  { n38 = JTBToolkit.makeNodeToken(n39); }
-  n41 = < RH >
-  { n40 = JTBToolkit.makeNodeToken(n41); }
-  n43 = "- DATA ISCRIZIONE:"
-  { n42 = JTBToolkit.makeNodeToken(n43); }
-  n44 = Data()
-  n46 = "- GRUPPO LOCALE:"
-  { n45 = JTBToolkit.makeNodeToken(n46); }
-  n48 = < NUM >
-  { n47 = JTBToolkit.makeNodeToken(n48); }
-  n50 = "- TESSERA GRUPPO LOCALE:"
-  { n49 = JTBToolkit.makeNodeToken(n50); }
-  n52 = < NUM >
-  { n51 = JTBToolkit.makeNodeToken(n52); }
-  n53 = NumeroDonazioni()
-  n54 = Idoneo()
-  n55 = DataProssimaDonazione()
-  n56 = TipoDonatore()
-  n57 = Sezione()
-  n59 = ";"
-  { n58 = JTBToolkit.makeNodeToken(n59); }
-  { return new Donatore(n0, n2, n3, n4, n6, n8, n10, n11, n13, n15, n17, n18, n23, n28, n30, n32, n34, n36, n38, n40, n42, n44, n45, n47, n49, n51, n53, n54, n55, n56, n57, n58); }
+  n30 = "- CITTADINANZA:"
+  { n29 = JTBToolkit.makeNodeToken(n30); }
+  n32 = < IDENTIFICATOR >
+  { n31 = JTBToolkit.makeNodeToken(n32); }
+  n34 = "- GRUPPO SANGUIGNO:"
+  { n33 = JTBToolkit.makeNodeToken(n34); }
+  n36 = < GRUPPOSANGUIGNO >
+  { n35 = JTBToolkit.makeNodeToken(n36); }
+  n38 = "- RH:"
+  { n37 = JTBToolkit.makeNodeToken(n38); }
+  n40 = < RH >
+  { n39 = JTBToolkit.makeNodeToken(n40); }
+  n42 = "- DATA ISCRIZIONE:"
+  { n41 = JTBToolkit.makeNodeToken(n42); }
+  n43 = Data()
+  n45 = "- GRUPPO LOCALE:"
+  { n44 = JTBToolkit.makeNodeToken(n45); }
+  n47 = < NUM >
+  { n46 = JTBToolkit.makeNodeToken(n47); }
+  n49 = "- TESSERA GRUPPO LOCALE:"
+  { n48 = JTBToolkit.makeNodeToken(n49); }
+  n51 = < NUM >
+  { n50 = JTBToolkit.makeNodeToken(n51); }
+  n52 = NumeroDonazioni()
+  n53 = Idoneo()
+  n54 = DataProssimaDonazione()
+  n55 = TipoDonatore()
+  n57 = "- SEZIONE:"
+  { n56 = JTBToolkit.makeNodeToken(n57); }
+  n58 = Sezione()
+  n60 = ";"
+  { n59 = JTBToolkit.makeNodeToken(n60); }
+  { return new Donatore(n0, n2, n3, n4, n6, n8, n10, n11, n13, n15, n16, n17, n22, n27, n29, n31, n33, n35, n37, n39, n41, n43, n44, n46, n48, n50, n52, n53, n54, n55, n56, n58, n59); }
 }
 
 Donazione Donazione() :
@@ -461,59 +488,15 @@ Sezione Sezione() :
   // --- JTB generated node declarations ---
   NodeToken n0 = null;
   Token n1 = null;
-  NodeOptional n2 = new NodeOptional();
-  NodeToken n3 = null;
-  Token n4 = null;
-  NodeOptional n5 = new NodeOptional();
-  NodeToken n6 = null;
-  Token n7 = null;
-  NodeListOptional n8 = new NodeListOptional();
-  NodeSequence n9 = null;
-  NodeToken n10 = null;
-  Token n11 = null;
-  NodeOptional n12 = null;
-  NodeToken n13 = null;
-  Token n14 = null;
-  NodeOptional n15 = null;
-  NodeToken n16 = null;
-  Token n17 = null;
+  NodeToken n2 = null;
+  Token n3 = null;
 }
 {
-  n1 = "- SEZIONE:"
+  n1 = < IDENTIFICATOR >
   { n0 = JTBToolkit.makeNodeToken(n1); }
-  [
-    n4 = < IDENTIFICATOR >
-    { n3 = JTBToolkit.makeNodeToken(n4); }
-    { n2.addNode(n3); }
-  ]
-  [
-    n7 = < NUM >
-    { n6 = JTBToolkit.makeNodeToken(n7); }
-    { n5.addNode(n6); }
-  ]
-  (
-    { n12 = new NodeOptional(); }
-    { n15 = new NodeOptional(); }
-    { n9 = new NodeSequence(3); }
-    n11 = "-"
-    { n10 = JTBToolkit.makeNodeToken(n11); }
-    { n9.addNode(n10); }
-    [
-      n14 = < IDENTIFICATOR >
-      { n13 = JTBToolkit.makeNodeToken(n14); }
-      { n12.addNode(n13); }
-    ]
-    { n9.addNode(n12); }
-    [
-      n17 = < NUM >
-      { n16 = JTBToolkit.makeNodeToken(n17); }
-      { n15.addNode(n16); }
-    ]
-    { n9.addNode(n15); }
-    { n8.addNode(n9); }
-  )*
-  { n8.nodes.trimToSize(); }
-  { return new Sezione(n0, n2, n5, n8); }
+  n3 = < NUM >
+  { n2 = JTBToolkit.makeNodeToken(n3); }
+  { return new Sezione(n0, n2); }
 }
 
 CodiceFiscale CodiceFiscale() :

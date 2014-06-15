@@ -23,13 +23,13 @@ public class Donatore implements INode {
 
   public NodeToken f8;
 
-  public NodeOptional f9;
+  public CodiceFiscale f9;
 
   public Indirizzo f10;
 
-  public NodeOptional f11;
+  public NodeTelefono f11;
 
-  public NodeOptional f12;
+  public NodeTelefono f12;
 
   public NodeOptional f13;
 
@@ -65,13 +65,15 @@ public class Donatore implements INode {
 
   public TipoDonatore f29;
 
-  public Sezione f30;
+  public NodeToken f30;
 
-  public NodeToken f31;
+  public Sezione f31;
+
+  public NodeToken f32;
 
   private static final long serialVersionUID = 147L;
 
-  public Donatore(final NodeToken n0, final Nome n1, final Cognome n2, final NodeToken n3, final NodeToken n4, final NodeToken n5, final Data n6, final NodeToken n7, final NodeToken n8, final NodeOptional n9, final Indirizzo n10, final NodeOptional n11, final NodeOptional n12, final NodeOptional n13, final NodeToken n14, final NodeToken n15, final NodeToken n16, final NodeToken n17, final NodeToken n18, final NodeToken n19, final NodeToken n20, final Data n21, final NodeToken n22, final NodeToken n23, final NodeToken n24, final NodeToken n25, final NumeroDonazioni n26, final Idoneo n27, final DataProssimaDonazione n28, final TipoDonatore n29, final Sezione n30, final NodeToken n31) {
+  public Donatore(final NodeToken n0, final Nome n1, final Cognome n2, final NodeToken n3, final NodeToken n4, final NodeToken n5, final Data n6, final NodeToken n7, final NodeToken n8, final CodiceFiscale n9, final Indirizzo n10, final NodeTelefono n11, final NodeTelefono n12, final NodeOptional n13, final NodeToken n14, final NodeToken n15, final NodeToken n16, final NodeToken n17, final NodeToken n18, final NodeToken n19, final NodeToken n20, final Data n21, final NodeToken n22, final NodeToken n23, final NodeToken n24, final NodeToken n25, final NumeroDonazioni n26, final Idoneo n27, final DataProssimaDonazione n28, final TipoDonatore n29, final NodeToken n30, final Sezione n31, final NodeToken n32) {
     f0 = n0;
     f1 = n1;
     f2 = n2;
@@ -104,6 +106,7 @@ public class Donatore implements INode {
     f29 = n29;
     f30 = n30;
     f31 = n31;
+    f32 = n32;
   }
 
   public <R, A> R accept(final IRetArguVisitor<R, A> vis, final A argu) {

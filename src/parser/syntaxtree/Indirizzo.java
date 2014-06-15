@@ -19,11 +19,11 @@ public class Indirizzo implements INode {
 
   public NodeToken f6;
 
-  public NodeOptional f7;
+  public Stato f7;
 
   private static final long serialVersionUID = 147L;
 
-  public Indirizzo(final NodeToken n0, final NodeToken n1, final NodeListOptional n2, final NodeToken n3, final NodeToken n4, final NodeToken n5, final NodeToken n6, final NodeOptional n7) {
+  public Indirizzo(final NodeToken n0, final NodeToken n1, final NodeListOptional n2, final NodeToken n3, final NodeToken n4, final NodeToken n5, final NodeToken n6, final Stato n7) {
     f0 = n0;
     f1 = n1;
     f2 = n2;

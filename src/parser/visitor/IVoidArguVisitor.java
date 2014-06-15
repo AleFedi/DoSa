@@ -5,54 +5,60 @@ import parser.syntaxtree.*;
 
 public interface IVoidArguVisitor<A> {
 
-  public void visit(final NodeChoice n, final A argu);
+	public void visit(final NodeChoice n, final A argu);
 
-  public void visit(final NodeList n, final A argu);
+	public void visit(final NodeList n, final A argu);
 
-  public void visit(final NodeListOptional n, final A argu);
+	public void visit(final NodeListOptional n, final A argu);
 
-  public void visit(final NodeOptional n, final A argu);
+	public void visit(final NodeOptional n, final A argu);
 
-  public void visit(final NodeSequence n, final A argu);
+	public void visit(final NodeSequence n, final A argu);
 
-  public void visit(final NodeTCF n, final A argu);
+	public void visit(final NodeTCF n, final A argu);
 
-  public void visit(final NodeToken n, final A argu);
+	public void visit(final NodeToken n, final A argu);
 
-  public void visit(final Scope n, final A argu);
+	public void visit(final Scope n, final A argu);
 
-  public void visit(final Gruppo n, final A argu);
+	public void visit(final Gruppo n, final A argu);
 
-  public void visit(final Donatore n, final A argu);
+	public void visit(final Donatore n, final A argu);
 
-  public void visit(final Donazione n, final A argu);
+	public void visit(final Donazione n, final A argu);
 
-  public void visit(final Indirizzo n, final A argu);
+	public void visit(final Indirizzo n, final A argu);
 
-  public void visit(final Sezione n, final A argu);
+	public void visit(final Sezione n, final A argu);
 
-  public void visit(final CodiceFiscale n, final A argu);
+	public void visit(final CodiceFiscale n, final A argu);
 
-  public void visit(final Telefono n, final A argu);
+	public void visit(final Telefono n, final A argu);
 
-  public void visit(final EMail n, final A argu);
+	public void visit(final EMail n, final A argu);
 
-  public void visit(final Idoneo n, final A argu);
+	public void visit(final Idoneo n, final A argu);
 
-  public void visit(final DataProssimaDonazione n, final A argu);
+	public void visit(final DataProssimaDonazione n, final A argu);
 
-  public void visit(final TipoDonatore n, final A argu);
+	public void visit(final TipoDonatore n, final A argu);
 
-  public void visit(final TipoDonazione n, final A argu);
+	public void visit(final TipoDonazione n, final A argu);
 
-  public void visit(final DatiDonatore n, final A argu);
+	public void visit(final DatiDonatore n, final A argu);
 
-  public void visit(final NumeroDonazioni n, final A argu);
+	public void visit(final NumeroDonazioni n, final A argu);
 
-  public void visit(final Nome n, final A argu);
+	public void visit(final Nome n, final A argu);
 
-  public void visit(final Cognome n, final A argu);
+	public void visit(final Cognome n, final A argu);
 
-  public void visit(final Data n, final A argu);
+	public void visit(final Data n, final A argu);
+
+	public void visit(final Stato n, final A argu);
+	
+	public void visit(final NodeTelefono n, final A argu);
+	
+	public void visit(final NodeOptionalTelefono n, final A argu);
 
 }

@@ -7,11 +7,11 @@ public class DatiDonatore implements INode {
 
   public NodeToken f0;
 
-  public NodeChoice f1;
+  public NodeChoiceDonatore f1;
 
   private static final long serialVersionUID = 147L;
 
-  public DatiDonatore(final NodeToken n0, final NodeChoice n1) {
+  public DatiDonatore(final NodeToken n0, final NodeChoiceDonatore n1) {
     f0 = n0;
     f1 = n1;
   }

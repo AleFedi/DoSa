@@ -54,5 +54,11 @@ public interface IRetArguVisitor<R, A> {
   public R visit(final Cognome n, final A argu);
 
   public R visit(final Data n, final A argu);
+  
+  public R visit (final Stato n, final A argu);
+  
+  public R visit (final NodeTelefono n, final A argu);
+  
+  public R visit (final NodeOptionalTelefono n, final A argu);
 
 }
