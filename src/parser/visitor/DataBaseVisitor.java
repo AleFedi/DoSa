@@ -372,6 +372,18 @@ public class DataBaseVisitor extends DepthFirstVoidVisitor {
 			connection.prepareStatement(
 					"INSERT INTO " + database + " (" + insert + " ) VALUES  ( "
 							+ value + " );").execute();
+			
+			//aggiornato il numero di donatori nella tabella gruppi
+			ResultSet numeroIscritti = connection.prepareStatement(
+					"SELECT niscritti FROM gruppi WHERE numero ="
+							+ numeroGruppo + ";").executeQuery();
+			numeroIscritti.next();
+
+			connection.prepareStatement(
+					"UPDATE gruppi SET niscritti = "
+							+ ((numeroIscritti.getInt(1)) + 1) + "WHERE numero="
+							+ numeroGruppo + ";").execute();
+			
 		} catch (SQLException e) {
 			System.out.println("Errore nell'insert");
 			e.printStackTrace();
@@ -735,7 +747,7 @@ public class DataBaseVisitor extends DepthFirstVoidVisitor {
 		try {
 			ResultSet sesso;
 			ResultSet dataProssimaDonazione;
-			ResultSet numerodonazioni;
+			ResultSet numeroDonazioni;
 			ResultSet newDataProssimaDonazione;
 
 			sesso = connection.prepareStatement(
@@ -748,14 +760,14 @@ public class DataBaseVisitor extends DepthFirstVoidVisitor {
 							+ idDonatore + ";").executeQuery();
 			dataProssimaDonazione.next();
 
-			numerodonazioni = connection.prepareStatement(
+			numeroDonazioni = connection.prepareStatement(
 					"SELECT numerodonazioni FROM donatori WHERE id ="
 							+ idDonatore + ";").executeQuery();
-			numerodonazioni.next();
+			numeroDonazioni.next();
 
 			connection.prepareStatement(
 					"UPDATE donatori SET numerodonazioni = "
-							+ ((numerodonazioni.getInt(1)) + 1) + "WHERE id="
+							+ ((numeroDonazioni.getInt(1)) + 1) + "WHERE id="
 							+ idDonatore + ";").execute();
 
 			if (tipodonazione == "Sangue Intero") {
